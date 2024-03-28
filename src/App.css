@@ -1,0 +1,9 @@
+body {
+  font-family: Arial, sans-serif; /* Default font family */
+  font-size: 16px; /* Default font size */
+  line-height: 1.6; /* Default line height */
+  background-color: #f0f0f0; /* Default background color */
+  color: #333; /* Default text color */
+  margin: 0; /* Remove default margin */
+  padding: 0; /* Remove default padding */
+}
