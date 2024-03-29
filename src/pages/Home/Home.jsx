@@ -10,8 +10,16 @@ const Home = () => {
 
   // Api call
   const fetchBlogs = async () => {
-    const response = await axios.get("http://localhost:3000/blogs")
-    setBlogs(response.data.blogs)
+    try {
+      const response = await axios.get("http://localhost:3000/blogs")
+      if (response.status == 200) {
+        setBlogs(response.data.blogs)
+      }
+      
+    } catch (error) {
+      alert("something went wrong!")
+    }
+    
   }
   useEffect(() => {
     fetchBlogs()
