@@ -1,19 +1,43 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import "./Home.css"
+import axios from 'axios'
 
 const Home = () => {
+
+  const [blogs, setBlogs] = useState([])
+
+
+  // Api call
+  const fetchBlogs = async () => {
+    const response = await axios.get("http://localhost:3000/blogs")
+    setBlogs(response.data.blogs)
+  }
+  useEffect(() => {
+    fetchBlogs()
+  }, [])
+  
+  console.log(blogs, "Blogs")
   return (
-    <div>
+    
+      <div>
       <Navbar/>
-      <div className="card">
-        <img className="card-image" src="https://via.placeholder.com/300x200" alt="Card Image"/>
-        <div className="card-content">
-          <h2 className="card-title">Card Title</h2>
-          <p className="card-description">This is a simple card template. You can customize it as needed.</p>
+      {blogs.map((blog) => {
+        return(
+          
+        <div className="card" key={blog._id}>
+          <div className="card-content">
+            <h2 className="card-title" >{blog.title}</h2> 
+            <h5 className="card-subtitle" >{blog.subTitle}</h5> 
+            <p className="card-description">{blog.description}</p>
+          </div>
+          {/* <Button/> */}
         </div>
-      </div>
+          )
+        })}
     </div>
+    
+    
   )
 }
 

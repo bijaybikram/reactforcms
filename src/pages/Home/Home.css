@@ -3,7 +3,8 @@
     margin: 50px;
     width: 400px; /* Set card width */
     border-radius: 8px; /* Add border radius */
-    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Add shadow */
+    border: 2px solid rgb(66, 152, 128);
+    box-shadow: 0 4px 8px rgba(53, 115, 85, 0.5); /* Add shadow */
     overflow: hidden; /* Hide overflow content */
   }
   
@@ -19,6 +20,10 @@
   
   .card-title {
     font-size: 24px; /* Set title font size */
+    margin-bottom: 10px; /* Add margin */
+  }
+  .card-subtitle {
+    font-size: 14px; /* Set title font size */
     margin-bottom: 10px; /* Add margin */
   }
   
