@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react'
 import Navbar from '../../components/Navbar/Navbar'
 import "./Home.css"
 import axios from 'axios'
+import Button from '../../components/Button/Button'
 
 const Home = () => {
 
@@ -25,7 +26,7 @@ const Home = () => {
     fetchBlogs()
   }, [])
   
-  console.log(blogs, "Blogs")
+  // console.log(blogs, "Blogs")
   return (
     
       <div>
@@ -38,8 +39,9 @@ const Home = () => {
             <h2 className="card-title" >{blog.title}</h2> 
             <h5 className="card-subtitle" >{blog.subTitle}</h5> 
             <p className="card-description">{blog.description}</p>
+
           </div>
-          {/* <Button/> */}
+          <Button name="Readmore"/>
         </div>
           )
         })}
