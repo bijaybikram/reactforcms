@@ -6,24 +6,17 @@ import { useNavigate } from 'react-router-dom'
 
 const CreateBlog = () => {
   const navigate = useNavigate()
-  
+  const [data, setData] = useState({
+    title: "",
+    subTitle: "",
+    description: "",
+  })
+
   const createBlog = async (e) => {
     e.preventDefault()
 
     // Predefined react method to extract form input datas in object using DOM formdata 
-    const formData = new FormData(e.currentTarget)
-    // FIRST APPROACH
-    // console.log(formData.get('title'))
-    // const data = {
-    //   title: formData.get("title"),
-    //   subTitle: formData.get("subTitle"),
-    //   description: formData.get("description"),
-    // }
-
-    // SECOND APPROACH
-    // changing the given formData data format from array to key value object notation and inserting them on data variable
-    const data = Object.fromEntries(formData)
-
+    // const formData = new FormData(e.currentTarget)
     
     // send above states data to API
     const response = await axios.post("http://localhost:3000/blogs", data)
@@ -35,6 +28,15 @@ const CreateBlog = () => {
     }
     
   }
+
+  const handleChange = (e) => {
+    const {name, value} = e.target
+    setData({
+      ...data,
+      [name]: value
+    })
+  }
+
   return (
     <>
     <Navbar/>
@@ -42,13 +44,12 @@ const CreateBlog = () => {
       <form onSubmit={createBlog}>
         <h2>Create a Blog Post</h2>
         <label htmlFor="title">Title:</label>
-        <input type="text" id="title" name="title" placeholder="Enter title" />
-        
+        <input type="text" id="title" name="title" onChange={handleChange} placeholder="Enter title" />
         <label htmlFor="subTitle">Subtitle:</label>
-        <input type="text" id="sub-title" name="subTitle" placeholder="Enter subtitle" />
+        <input type="text" id="sub-title" name="subTitle" onChange={handleChange} placeholder="Enter subtitle" />
         
         <label htmlFor="description">Description:</label>
-        <textarea id="content" name="description" placeholder="Enter blog content" rows="6" ></textarea>
+        <textarea id="content" name="description" onChange={handleChange} placeholder="Enter blog content" rows="6" ></textarea>
         
         <input type="submit" value="Submit"/>
       </form>
