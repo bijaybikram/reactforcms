@@ -3,6 +3,7 @@ import Navbar from '../../components/Navbar/Navbar'
 import "./Home.css"
 import axios from 'axios'
 import Button from '../../components/Button/Button'
+import { Link } from 'react-router-dom'
 
 const Home = () => {
 
@@ -39,9 +40,8 @@ const Home = () => {
             <h2 className="card-title" >{blog.title}</h2> 
             <h5 className="card-subtitle" >{blog.subTitle}</h5> 
             <p className="card-description">{blog.description}</p>
-
+            <Link to={"/singleBlog/" + blog._id}>See More</Link>
           </div>
-          <Button name="Readmore"/>
         </div>
           )
         })}
