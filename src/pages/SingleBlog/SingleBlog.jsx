@@ -1,7 +1,8 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { useNavigate, useParams } from 'react-router-dom'
+import { Link, useNavigate, useParams } from 'react-router-dom'
 import Button from '../../components/Button/Button'
+import Navbar from '../../components/Navbar/Navbar'
 
 const SingleBlog = () => {
   const navigate = useNavigate()
@@ -37,12 +38,15 @@ const SingleBlog = () => {
 
   return (
     <>
-      <div className="card" key={blog._id}>
+    <Navbar/>
+      <div className="card">
           <div className="card-content">
             <h2 className="card-title" >{blog.title}</h2> 
             <h5 className="card-subtitle" >{blog.subTitle}</h5> 
             <p className="card-description">{blog.description}</p>
             <Button onClick = {deleteBlog} name="Delete"/>
+            {/* <Button navigate = {`/updateBlog/${blog.id}`} name="Delete"/> */}
+            <Link to={`/updateBlog/${blog._id}`}>Update</Link>
           </div>
         </div>
     </>
